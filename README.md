@@ -64,6 +64,12 @@ $ git pull origin otherbranch
 # hey this is a rebase with the remote branch
 $ git pull --rebase
 
+# hey this is a rebase with the remote branch for whose possible conflicts we accept the other branch solutions
+$ (mybranch) git pull --rebase origin theirbranch --strategy-option theirs
+
+# hey this is a rebase with the remote branch for whose possible conflicts we accept our branch solutions
+$ (mybranch) git pull --rebase origin theirbranch --strategy-option ours
+
 # hey is this a rebase onto?
 $ git pull origin otherbranch --rebase
 
@@ -154,8 +160,15 @@ $ git branch -f mybranch otherbranch
 # avoiding fast-forward (i.e. always creates a merge commit)
 (master) $ git merge feature --no-ff
 
-# rebasing feature on local version of master
+# rebasing feature on LOCAL version of master
 (feature) $ git rebase master
+
+# rebasing feature on LOCAL version of master (if there are conflicts they're automatically solved accepting master changes)
+(feature) $ git rebase master --strategy-option theirs
+
+# rebasing feature on LOCAL version of master  (if there are conflicts they're automatically solved accepting feature changes)
+(feature) $ git rebase master --strategy-option ours
+
 # TIP:
 # if you do:
 # git pull origin master --rebase
