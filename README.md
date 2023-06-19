@@ -73,6 +73,38 @@ $ (mybranch) git pull --rebase origin theirbranch --strategy-option ours
 # hey is this a rebase onto?
 $ git pull origin otherbranch --rebase
 
+# check latest common commit SHA between two specified branches
+$ git merge-base branch1 branch2
+
+# one shot rebase that allows solving conflicts at once:
+# ~~~~~~
+# update remote reference
+git fetch -tpf
+
+# create a clone of the main branch with one commit only above 'mybranch'
+git checkout -b main-clone origin/main
+git reset --soft `git merge-base mybranch origin/main`
+git commit -m "all master updates in a single commit"
+
+# squash all commits in 'mybranch' in a single commit
+git checkout mybranch
+git reset --soft `git merge-base mybranch origin/master`
+git commit -m "add new feature"
+
+# rebasing in one shot and solve conflicts
+git rebase main-clone
+# ... solve all conflicts
+git add .
+git rebase --continue
+
+# delete temp branch
+git branch -D main-clone
+
+# rebase the rebased branch with the real 'main' and push force
+git pull --rebase origin main
+git push -f origin mybranch
+# ~~~~~
+
 # create a new local branch from the current one and switch on it
 $ git checkout -b mybranch
 # or
