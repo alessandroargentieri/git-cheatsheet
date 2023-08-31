@@ -132,6 +132,14 @@ $ git checkout v1.2.3
 # switching on a different commit SHA (detached state: you cannot commit on it!)
 $ git checkout 5892d5feb
 
+# switching on the previous branch
+$ git checkout -
+# or
+$ git checkout @{-1}
+
+# switching on the second previous branch
+$ git checkout @{-2}
+
 # reset branch to specific commit sha mantaining the differences in the stage
 # and keeping the untracked files
 $ git reset --soft 5892d5feb
