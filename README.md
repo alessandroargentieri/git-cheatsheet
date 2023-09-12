@@ -289,13 +289,25 @@ $ git push -f
 $ git branch -f mybranch <safe-commit-sha>
 # and push force!
 
-# current local changes
+# changes applied in the last commit
 $ git show
 
-# changes applied with the last commit
+# files changed from the last commit
+$ git show --name-status
+
+# committed changes in one file in particular
+git show internal/data/clusters.go
+
+# committed changes in one file in particular commit by commit between two SHAs
+git show <commit1-sha>..<commit2-sha> path/to/file
+
+# committed changes in one file in particular commit by commit between two branches (the head SHAs of the two branches)
+git show branch1..branch2 path/to/file
+
+# changes (not yet added) from the last commit
 $ git diff
 
-# files changed in the last commit
+# files changed from the last commit (changes not added yet)
 $ git diff --name-status
 
 # changes applied between two commit
