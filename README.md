@@ -355,6 +355,9 @@ $ git log --oneline <commit1-sha>...<commit2-sha>
 # look for a portion of commit message in all the branches for a specified author in a time range
 $ git log --all --grep="not in Bradcumb" --author=alexmawashi87@gmail.com --after="2018-07-01" --until="2018-08-31"
 
+# check most recent commit to have modified a specific file
+$ git log -n 1 --pretty=format:"%h - %an, %ar : %s" -- path/to/file
+
 # look which local branches contain a specified commit sha
 $ git branch --contains <commit-sha>
 
