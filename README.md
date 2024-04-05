@@ -185,6 +185,15 @@ git branch -f mybranch origin/otherbranch
 # forcing a local branch to be equal to anoter local one (you must be on another branch)
 $ git branch -f mybranch otherbranch
 
+# check what upstream branch has been set to a given branch 'my-branch'
+$ git rev-parse --abbrev-ref my-branch@{u}
+
+# check all the upstream set to every local branch
+$ git branch -vv
+
+# set an upstream to a branch
+(my-branch) $ git branch --set-upstream-to origin/my-branch
+
 # merging a feature into local version of master
 (master) $ git merge feature
 # TIP:
@@ -403,6 +412,9 @@ $ git remote
 # add remote named 'origin'
 $ git remote add origin https://<Username>:<token>@github.com/<Username>/<YourRepo>.git
 
+# rename a remote
+$ git remote rename old-name new-name
+
 # get remote 'origin' url
 $ git config --get remote.origin.url
 
@@ -412,7 +424,7 @@ $ git remote set-url origin https://<Username>:<token>@github.com/<Username>/<Yo
 # check default upstream/downstream for each remote
 $ git remote -v 
 
-# check for every branch/tag the respective remote default
+# check for every branch/tag the respective remote default upstream
 $ git branch -vv
 
 # disable security check SSL
