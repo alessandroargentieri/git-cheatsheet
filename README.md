@@ -464,7 +464,7 @@ $ ssh-add ~/.ssh/id_rsa
 $ git remote set-url origin abc@***.com:path/to/repo
 
 # add a file in the .gitignore after having pushed it
-$ git rm --cached project.properties
-$ git rm --cached gen/
+$ git rm -r --cached .
+$ git add .
 # then commit
 ```
