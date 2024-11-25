@@ -373,6 +373,9 @@ $ git branch --contains <commit-sha>
 # look which remote branches contain a specified commit sha
 $ git branch -r --contains <commit-sha>
 
+# git blame a file in a specific commit, in a specific set of lines
+$ git blame -c --date=short -L <line-start>,<line-end> <commit-sha> -- <filepath>
+
 # list of the stashes
 $ git stash list
 
